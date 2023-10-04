@@ -1,21 +1,22 @@
-const express = require('express');
-const dotenv = require('dotenv');
-const bodyParser = require('body-parser');
+const express = require('express')
+const app = express()
 
-// Create an Express app
-const app = express();
+require('dotenv').config({path:'.env'})
 
-app.use(bodyParser.urlencoded({ extended: true }));
+const verification = require('./src/utils/verification')
 
-// Load the .env file
-dotenv.config();
+//settings
+app.set('port', process.env.PORT)
 
-// Get env variables
-const PORT = process.env.PORT;
+//middleware
+app.use(express.json())
+app.use(express.urlencoded({ extended: false }))
 
-app.use('/auth', require('./src/views/auth'))
+//routes
+app.use('/login', require('./src/routes/login'))
+app.use('/register', require('./src/routes/register'))
 
-// Listen on the port
-app.listen(PORT, () => {
-  console.log(`Listening on port ${PORT}...`);
-});
+//server starter
+app.listen(app.get('port'), () => {
+	console.log('Server on port ' + app.get('port'))
+})
