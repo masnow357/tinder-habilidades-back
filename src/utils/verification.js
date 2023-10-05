@@ -10,7 +10,7 @@ const verification = express.Router();
 verification.use((req, res, next) => {
     let token = req.headers['x-access-token'] || req.headers['authorization']
 
-    if (!token || token === undefined || token === null || token === '') {
+    if (!token || token === '') {
         return res.status(401).send({
             error: 'Access token is required'
         })
@@ -18,7 +18,7 @@ verification.use((req, res, next) => {
 
     if(token.startsWith('Bearer ')){
         token = token.slice(7, token.length)
-        
+
     }
 
     if(token){

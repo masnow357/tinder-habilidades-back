@@ -12,9 +12,13 @@ app.set('port', process.env.PORT)
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 
+//auth routes
+app.use('/login', require('./src/routes/loginView'))
+app.use('/register', require('./src/routes/registerView'))
+
 //routes
-app.use('/login', require('./src/routes/login'))
-app.use('/register', require('./src/routes/register'))
+app.use('/api/skills', verification, require('./src/routes/SkillView'))
+app.use('/api/linked_skills', verification, require('./src/routes/linkedSkillsView'))
 
 //server starter
 app.listen(app.get('port'), () => {
