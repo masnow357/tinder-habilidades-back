@@ -16,9 +16,12 @@ app.use(express.urlencoded({ extended: false }))
 app.use('/login', require('./src/routes/loginView'))
 app.use('/register', require('./src/routes/registerView'))
 
-//routes
+//skill routes
 app.use('/api/skills', verification, require('./src/routes/SkillView'))
 app.use('/api/linked_skills', verification, require('./src/routes/linkedSkillsView'))
+
+//match routes
+app.use('/api/match', verification, require('./src/routes/matchView'))
 
 //server starter
 app.listen(app.get('port'), () => {

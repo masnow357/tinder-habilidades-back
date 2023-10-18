@@ -4,8 +4,7 @@ const router = express.Router();
 const {Linked_skill} = require('../../models/index')
 
 
-router.use('/', require('../controllers/addLinkedSkill'))
-router.use('/', require('../controllers/getLinkedSkills'))
+router.use('/', require('../controllers/createMatch'))
 
 module.exports = router;
 

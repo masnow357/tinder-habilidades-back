@@ -31,7 +31,15 @@ module.exports = {
           model: 'Users',
           key: 'id'
         },
-      }
+      },
+		user_like: {
+			type: Sequelize.BOOLEAN,
+			allowNull: true
+		},
+		company_like: {
+			type: Sequelize.BOOLEAN,
+			allowNull: true
+		}
     });
   }
 };

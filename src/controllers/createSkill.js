@@ -4,7 +4,7 @@ const router = express.Router();
 
 const {Skill} = require('../../models/index')
 
-router.post('/', async (req, res) => {
+router.post('/createSkill', async (req, res) => {
 	const {skill_name} = req.body
 	let skill
 	try {

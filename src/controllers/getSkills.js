@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router();
 
 const {Skill} = require('../../models/index')
-router.get('/', async (req, res) => {
+router.get('/getSkills', async (req, res) => {
 	let skill
 	try {
 		skill = await Skill.findAll();
